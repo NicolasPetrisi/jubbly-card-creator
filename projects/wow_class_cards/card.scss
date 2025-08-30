@@ -1,0 +1,177 @@
+.project-wow_class_cards .card {
+  background-size: cover;
+  position: relative;
+  font-family: 'Cinzel', serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  .print-area {
+    position: relative;
+
+    background-color: black;
+
+    padding: 1px;
+    width: 100%;
+    height: 100%;
+
+    @media only screen {
+      border: 2px solid red;
+      border-radius: 3mm;
+      // Any styles you want to only show on screen, not print,
+      // can go in here as well :)
+    }
+
+    .alignment-line {
+      @media only screen {
+        position: absolute;
+        background-color: red;
+        height: 150%;
+        width: 1px;
+        inset-inline-start: 3%;
+        z-index: 100;
+      }
+    }
+  }
+
+  .talent-card-template {
+    background: url("projects/wow_class_cards/img/upscaled_talent_template_8.png") no-repeat -2px -5px;
+    background-size: 102%;
+    overflow: hidden;
+
+    --angle: 0.1deg;
+    rotate: var(--angle);
+
+    border-radius: inherit;
+    height: 100%;
+    width: 100%;
+
+    .vertical-black-filler-talent-template {
+      position: absolute;
+      background-color: black;
+      height: 120%;
+      width: 10%;
+      right: 0;
+      transform-origin: left;
+      transform: translateX(13px) translateY(-13px);
+    }
+
+    .counter-rotate-talent-template {
+      position: absolute;
+      rotate: calc(var(--angle) * -1);
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .talent-top-structure {
+    border-radius: inherit;
+    width: 100%;
+    height: 33%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .talent-image {
+    margin-top: 6.3%;
+    margin-left: 29.75%;
+
+    --size: 39.5%;
+    width: calc(var(--size) * 1.037);
+    height: calc(var(--size) * 2);
+    border-radius: 2px;
+  }
+
+  .card-structure-bot {
+    width: 100%;
+    height: 70%;
+    border-radius: inherit;
+    margin-top: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .talent-name {
+      font-family: none, serif;
+      font-size: 10pt;
+      width: 140px;
+      height: 14.5px;
+      margin-top: 1px;
+      border-radius: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .talent-description {
+      font-family: none, serif;
+      height: inherit;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-wrap: wrap;
+      text-align: center;
+      font-size: 8pt;
+      padding: 10px;
+    }
+
+    .talent-level {
+      font-weight: bold;
+      font-family: math;
+      font-size: 14px;
+      position: absolute;
+      bottom: 16px;
+      right: 19px;
+      width: 15px;
+      height: 20px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+
+    .trapezoid-wrapper {
+      display: inline-block;
+      position: relative;
+      vertical-align: middle; /* keeps inline-blocks aligned */
+
+    }
+
+    .trapezoid-wrapper.has-plus {
+      margin-right: 1px;
+    }
+
+    .trapezoid-container {
+      display: inline-block;
+      padding: 0.5px;
+      background: black;
+      clip-path: polygon(35% 0%, 70% 0%, 100% 100%, 0% 100%);
+    }
+
+    .trapezoid {
+      width: 12px;
+      height: 8px;
+      clip-path: polygon(35% 0%, 70% 0%, 100% 100%, 0% 100%);
+    }
+
+    .trapezoid-num {
+      color: white;
+      font-weight: bold;
+      font-family: sans-serif;
+      font-size: 9px;
+      position: relative;
+      margin-left: 0.5px;
+      line-height: 9px;
+    }
+
+    .trapezoid-plus {
+      font-family: cursive;
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+    }
+  }
+}
+
