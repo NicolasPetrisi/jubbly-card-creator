@@ -132,6 +132,36 @@
     }
   }
 
+  .spell-card-template {
+    background: url("projects/wow_class_cards/img/spell_template.png") no-repeat -2px -5px;
+    background-size: 102%;
+    overflow: hidden;
+
+    --angle: 0.1deg;
+    rotate: var(--angle);
+
+    border-radius: inherit;
+    height: 100%;
+    width: 100%;
+
+    .vertical-black-filler-spell-template {
+      position: absolute;
+      background-color: black;
+      height: 120%;
+      width: 10%;
+      right: 0;
+      transform-origin: left;
+      transform: translateX(13px) translateY(-13px);
+    }
+
+    .counter-rotate-spell-template {
+      position: absolute;
+      rotate: calc(var(--angle) * -1);
+      height: 100%;
+      width: 100%;
+    }
+  }
+
   .trapezoid-wrapper {
     display: inline-block;
     position: relative;
