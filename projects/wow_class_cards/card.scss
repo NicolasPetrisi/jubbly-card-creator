@@ -75,10 +75,32 @@
     height: 8px;
   }
 
+  .meta-text {
+    font-weight: bold;
+    font-family: math;
+    font-size: 14px;
+    width: 15px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .expansion-mark {
+    background: url("projects/wow_class_cards/img/expansion_mark.png") center no-repeat;
+    background-size: 125%;
+    background-position-y: 55%;
+    border-radius: 30px;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    right: 5.5%;
+    bottom: 3%;
+  }
+
   //---------------
   //--Talent Card--
   //---------------
-
   .talent-card-template {
     background: url("projects/wow_class_cards/img/talent_template.png") no-repeat -2px -5px;
     background-size: 102%;
@@ -164,17 +186,11 @@
     }
 
     .talent-level {
-      font-weight: bold;
-      font-family: math;
-      font-size: 14px;
       position: absolute;
       bottom: 16px;
       right: 19px;
       width: 15px;
       height: 20px;
-      align-items: center;
-      justify-content: center;
-      display: flex;
     }
   }
 
@@ -216,20 +232,55 @@
     width: 100%;
     height: 46%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    position: relative;
 
-    .spell-name {
-      font-family: none, serif;
-      font-size: 10pt;
-      width: 60%;
-      height: 25%;
-      margin-top: -40%;
-      margin-left: 25%;
+    .spell-name-area {
+      height: 36%;
       border-radius: inherit;
       display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      padding-top: 3%;
+      padding-right: 6%;
+
+      .text-field {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: none, serif;
+        font-size: 10pt;
+        width: 67%;
+        height: 70%;
+      }
+    }
+
+    .spell-data-area {
+      display: flex;
+      flex: 1;
+      width: 50%;
       justify-content: center;
       align-items: center;
+      position: relative;
+
+      .spell-level {
+        position: absolute;
+        padding-right: 24%;
+        padding-top: 20%;
+      }
+
+      .spell-energy {
+        position: absolute;
+        padding-left: 48.5%;
+        padding-top: 39%;
+      }
+
+      .spell-gold {
+        position: absolute;
+        padding-left: 48.5%;
+        padding-bottom: 42%;
+      }
     }
   }
 
@@ -239,10 +290,10 @@
     .spell-image {
       position: absolute;
       --size: 45%;
-      width: calc(var(--size) * 1.05);
-      height: calc(var(--size) * 1.34);
-      margin-top: 25%;
-      margin-left: 43.5%;
+      width: calc(var(--size) * 1.1);
+      height: calc(var(--size) * 1.4);
+      margin-top: 25.3%;
+      margin-left: 47.5%;
     }
 
     .spell-type {
@@ -250,8 +301,8 @@
       --size: 27%;
       width: calc(var(--size) * 1.05);
       height: calc(var(--size) * 1.45);
-      margin-top: -38%;
-      margin-right: 67%;
+      margin-top: 2%;
+      margin-left: 2.5%;
     }
   }
 
@@ -274,20 +325,6 @@
       text-align: center;
       font-size: 8pt;
       padding: 10px;
-    }
-
-    .spell-level {
-      font-weight: bold;
-      font-family: math;
-      font-size: 14px;
-      position: absolute;
-      bottom: 16px;
-      right: 19px;
-      width: 15px;
-      height: 20px;
-      align-items: center;
-      justify-content: center;
-      display: flex;
     }
   }
 }
