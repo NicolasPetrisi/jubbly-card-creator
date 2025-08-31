@@ -21,7 +21,7 @@ class DiceOneColor extends HTMLElement {
 
         this.innerHTML = `
       <div class="trapezoid-wrapper ${plus === 'y' ? 'has-plus' : ''}">
-        <svg class="trapezoid-svg" width=${widthBot} height=${height} viewBox="${viewBox}">
+        <svg class="trapezoid" width=${widthBot} height=${height} viewBox="${viewBox}">
           <!-- trapezoid shape with border -->
           <polygon 
             points="${points}"
@@ -52,7 +52,7 @@ class DiceTwoColors extends HTMLElement {
 
         this.innerHTML = `
       <div class="trapezoid-wrapper ${plus === 'y' ? 'has-plus' : ''}">
-        <svg class="trapezoid-svg" width=${widthBot} height=${height} viewBox="${viewBox}">
+        <svg class="trapezoid" width=${widthBot} height=${height} viewBox="${viewBox}">
           <defs>
             <linearGradient id="twoColorGradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stop-color="${color_1}" />
