@@ -20,7 +20,7 @@ class DiceOneColor extends HTMLElement {
         const plus = this.getAttribute('p') || 'n';
 
         this.innerHTML = `
-      <div class="trapezoid-wrapper ${plus === 'y' ? 'has-plus' : ''}">
+      <div class="trapezoid-wrapper">
         <svg class="trapezoid" width=${widthBot} height=${height} viewBox="${viewBox}">
           <!-- trapezoid shape with border -->
           <polygon 

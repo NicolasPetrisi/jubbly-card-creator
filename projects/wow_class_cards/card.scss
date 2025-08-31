@@ -33,6 +33,52 @@
     }
   }
 
+  .trapezoid-wrapper {
+    display: inline-block;
+    position: relative;
+    vertical-align: bottom;
+    top: -1px;
+
+    .trapezoid {
+      display: inline-block;
+      vertical-align: middle;
+
+      .trapezoid-num {
+        font-family: sans-serif;
+        font-weight: bold;
+        font-style: normal;
+        font-size: 8px;
+        fill: white;
+        pointer-events: none;
+        height: 100%;
+      }
+    }
+
+    .trapezoid-plus {
+      font-family: cursive;
+      position: absolute;
+      top: 1px;
+      right: -5px;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+    }
+  }
+
+  dice-one, dice-two {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    vertical-align: middle;
+    width: 12px;
+    height: 8px;
+  }
+
+  //---------------
+  //--Talent Card--
+  //---------------
+
   .talent-card-template {
     background: url("projects/wow_class_cards/img/talent_template.png") no-repeat -2px -5px;
     background-size: 102%;
@@ -132,6 +178,9 @@
     }
   }
 
+  //--------------
+  //--Spell Card--
+  //--------------
   .spell-card-template {
     background: url("projects/wow_class_cards/img/spell_template.png") no-repeat -2px -5px;
     background-size: 102%;
@@ -162,40 +211,87 @@
     }
   }
 
-  .trapezoid-wrapper {
-    display: inline-block;
-    position: relative;
-    vertical-align: middle;
-    top: -3px;
+  .spell-structure-top {
+    border-radius: inherit;
+    width: 100%;
+    height: 46%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    .trapezoid {
-      display: inline-block;
-      vertical-align: middle;
+    .spell-name {
 
-      .trapezoid-num {
-        font-family: sans-serif;
-        font-weight: bold;
-        font-style: normal;
-        font-size: 8px;
-        fill: white;
-        pointer-events: none;
-        height: 100%;
-      }
-    }
+      background-color: #98c379;
 
-    .trapezoid-plus {
-      font-family: cursive;
-      position: absolute;
-      top: -3px;
-      right: -5px;
-      width: 10px;
-      height: 10px;
-      pointer-events: none;
+      font-family: none, serif;
+      font-size: 10pt;
+      width: 60%;
+      height: 25%;
+      margin-top: -40%;
+      margin-left: 25%;
+      border-radius: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 
-  .trapezoid-wrapper.has-plus {
-    margin-right: 1px;
+  .spell-structure-top.icon {
+    position: absolute;
+
+    .spell-image {
+      position: absolute;
+      --size: 45%;
+      width: calc(var(--size) * 1.05);
+      height: calc(var(--size) * 1.45);
+      margin-top: 25%;
+      margin-left: 45%;
+    }
+
+    .spell-type {
+      position: absolute;
+      --size: 27%;
+      width: calc(var(--size) * 1.05);
+      height: calc(var(--size) * 1.45);
+      margin-top: -38%;
+      margin-right: 67%;
+    }
+  }
+
+  .spell-structure-bot {
+    width: 100%;
+    height: 70%;
+    border-radius: inherit;
+    margin-top: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .spell-description {
+      font-family: none, serif;
+      height: inherit;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-wrap: wrap;
+      text-align: center;
+      font-size: 8pt;
+      padding: 10px;
+    }
+
+    .spell-level {
+      font-weight: bold;
+      font-family: math;
+      font-size: 14px;
+      position: absolute;
+      bottom: 16px;
+      right: 19px;
+      width: 15px;
+      height: 20px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
   }
 }
 
