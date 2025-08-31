@@ -132,41 +132,34 @@
     .trapezoid-wrapper {
       display: inline-block;
       position: relative;
-      vertical-align: middle; /* keeps inline-blocks aligned */
-
+      vertical-align: middle;
+      top: -3px;
     }
 
     .trapezoid-wrapper.has-plus {
       margin-right: 1px;
     }
 
-    .trapezoid-container {
-      display: inline-block;
-      padding: 0.5px;
-      background: black;
-      clip-path: polygon(35% 0%, 70% 0%, 100% 100%, 0% 100%);
-    }
 
-    .trapezoid {
-      width: 12px;
-      height: 8px;
-      clip-path: polygon(35% 0%, 70% 0%, 100% 100%, 0% 100%);
+    .trapezoid-svg {
+      display: inline-block;
+      vertical-align: middle;
     }
 
     .trapezoid-num {
-      color: white;
-      font-weight: bold;
       font-family: sans-serif;
-      font-size: 9px;
-      position: relative;
-      margin-left: 0.5px;
-      line-height: 9px;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 8px;
+      fill: white;
+      pointer-events: none;
+      height: 100%;
     }
 
     .trapezoid-plus {
       font-family: cursive;
       position: absolute;
-      top: -5px;
+      top: -3px;
       right: -5px;
       width: 10px;
       height: 10px;

@@ -1,2 +1,2 @@
 id, type, level, image, name, description
-testId, talent, III, test_icon,The Test Talent,"This is the description of the talent where you get to spot one <dice-one c="red"></dice-one>, one <dice-one n="2" c="green" p="y"></dice-one> and one <dice-one n="6" c="black"></dice-one> and finally one <dice-two n="8" c1="red" c2="green"></dice-two> dice"
+testId, talent, III, test_icon,The Test Talent,"This is the description of the talent where you get to spot one <dice-one c="red" p="y"></dice-one>, one <dice-one n="2" c="green" p="y"></dice-one> one <dice-one n="6" c="black"></dice-one>, and finally one <dice-two n="8" c1="red" c2="green"></dice-two> dice"
