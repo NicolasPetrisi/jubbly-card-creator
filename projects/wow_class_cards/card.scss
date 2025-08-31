@@ -63,26 +63,26 @@
     }
   }
 
-  .talent-top-structure {
+  .talent-structure-top {
     border-radius: inherit;
     width: 100%;
     height: 33%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+
+    .talent-image {
+      margin-top: 6.3%;
+      margin-left: 29.75%;
+
+      --size: 39.5%;
+      width: calc(var(--size) * 1.037);
+      height: calc(var(--size) * 2);
+      border-radius: 2px;
+    }
   }
 
-  .talent-image {
-    margin-top: 6.3%;
-    margin-left: 29.75%;
-
-    --size: 39.5%;
-    width: calc(var(--size) * 1.037);
-    height: calc(var(--size) * 2);
-    border-radius: 2px;
-  }
-
-  .card-structure-bot {
+  .talent-structure-bot {
     width: 100%;
     height: 70%;
     border-radius: inherit;
@@ -128,32 +128,27 @@
       justify-content: center;
       display: flex;
     }
+  }
 
-    .trapezoid-wrapper {
-      display: inline-block;
-      position: relative;
-      vertical-align: middle;
-      top: -3px;
-    }
-
-    .trapezoid-wrapper.has-plus {
-      margin-right: 1px;
-    }
-
+  .trapezoid-wrapper {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    top: -3px;
 
     .trapezoid {
       display: inline-block;
       vertical-align: middle;
-    }
 
-    .trapezoid-num {
-      font-family: sans-serif;
-      font-weight: bold;
-      font-style: normal;
-      font-size: 8px;
-      fill: white;
-      pointer-events: none;
-      height: 100%;
+      .trapezoid-num {
+        font-family: sans-serif;
+        font-weight: bold;
+        font-style: normal;
+        font-size: 8px;
+        fill: white;
+        pointer-events: none;
+        height: 100%;
+      }
     }
 
     .trapezoid-plus {
@@ -165,6 +160,10 @@
       height: 10px;
       pointer-events: none;
     }
+  }
+
+  .trapezoid-wrapper.has-plus {
+    margin-right: 1px;
   }
 }
 
