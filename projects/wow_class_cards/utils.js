@@ -7,7 +7,7 @@ const widthTopRight = (widthBot * 2) / 3;
 const points = `${widthTopLeft} 0, ${widthTopRight} 0, ${widthBot} ${height}, 0 ${height}`;
 const viewBox = `0 0 ${widthBot} ${height}`;
 
-const textX =  widthBot / 2;
+const textX = widthBot / 2;
 const textY = "5";
 
 
