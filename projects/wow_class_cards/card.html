@@ -25,7 +25,7 @@ It's a good idea to leave the :id and :key as well :)
             <div style="height: 100%; width: 100%">
                 <div class="talent-structure-top icon">
                     <div class="talent-image"
-                         :style="{background: `url(projects/wow_class_cards/img/${card.image}.png) center`, backgroundSize: 'cover'}"
+                         :style="{background: `url(projects/wow_class_cards/img/icons/${card.image}.png) center`, backgroundSize: 'cover'}"
                     ></div>
                 </div>
                 <div class="talent-card-template">
@@ -54,23 +54,25 @@ It's a good idea to leave the :id and :key as well :)
             <div style="height: 100%; width: 100%">
                 <div class="spell-structure-top icon">
                     <div class="spell-type"
-                         :style="{background: `url(projects/wow_class_cards/img/icons/${card.spell_type_image}.png) center`, backgroundSize: 'cover'}"
+                         :style="{background: `url(projects/wow_class_cards/img/card_template/${card.spell_type_image}.png) center`, backgroundSize: 'cover'}"
                     ></div>
                     <div class="spell-image"
                          :style="{background: `url(projects/wow_class_cards/img/icons/${card.image}.png) center`, backgroundSize: 'cover'}"
                     ></div>
                 </div>
                 <div class="spell-card-template">
-                    <!-- this is used to get ridd of white edge on talen template -->
+                    <!-- this is used to get rid of white edge on talen template -->
                     <div class="vertical-black-filler-spell-template"></div>
 
                     <div class="counter-rotate-spell-template">
                         <div class="spell-structure-top">
-                            <div class="spell-name-area" backl>
+                            <div class="spell-name-area">
                                 <div class="text-field">
                                     <div x-html="markdownParse(card.name)"></div>
                                 </div>
-                                <div class="quick_spell"></div>
+                                <template x-if="card.quick_spell === 'y'">
+                                    <div class="quick_spell"></div>
+                                </template>
                             </div>
                             <div class="spell-data-area">
                                 <div class="spell-level">
