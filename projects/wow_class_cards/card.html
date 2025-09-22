@@ -74,7 +74,7 @@ It's a good idea to leave the :id and :key as well :)
                     ></div>
                 </div>
                 <div class="spell-card-template">
-                    <!-- this is used to get rid of white edge on talen template -->
+                    <!-- this is used to get rid of white edge on talent template -->
                     <div class="vertical-black-filler-spell-template"></div>
 
                     <div class="counter-rotate-spell-template">
@@ -100,6 +100,10 @@ It's a good idea to leave the :id and :key as well :)
                             </div>
                         </div>
                         <div class="spell-structure-bot">
+                            <template x-if="card.unique_type">
+                                <div class="unique-type" x-html="markdownParse(card.unique_type)">
+                                </div>
+                            </template>
                             <div class="spell-description" x-html="markdownParse(card.description)">
                             </div>
 
@@ -108,6 +112,8 @@ It's a good idea to leave the :id and :key as well :)
                 </div>
             </div>
         </template>
-        <div class="expansion-mark"></div>
+        <template x-if="card.type !== 'back'"> <!-- No expansion icon on the backside of the cards -->
+            <div class="expansion-mark"></div>
+        </template>
     </div>
 </div>
