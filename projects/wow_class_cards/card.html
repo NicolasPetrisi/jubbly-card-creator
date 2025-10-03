@@ -107,6 +107,12 @@ It's a good idea to leave the :id and :key as well :)
                             <div class="spell-description" x-html="markdownParse(card.description)">
                             </div>
 
+                            <template x-if="card.health">
+                                <div class="spell-health" x-html="markdownParse(card.health)">
+                                </div>
+                            </template>
+
+
                         </div>
                     </div>
                 </div>
