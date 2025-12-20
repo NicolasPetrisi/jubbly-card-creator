@@ -191,15 +191,9 @@
     .talent-description-structure {
       height: 90%;
       display: flex;
-      flex-direction: column; /* stack children vertically */
 
       .talent-description {
         height: 100%;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        flex-wrap: wrap;
 
         padding: 10px;
 
@@ -208,31 +202,19 @@
         font-size: 8pt;
       }
 
-      .talent-description-extra {
-        font-family: none, serif;
-        padding-left: 10px;
-        padding-bottom: 10px;
-
-        height: 30%;
-        width: 72%;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        flex-wrap: wrap;
-        text-align: right;
-        font-size: 8pt;
-      }
-
       .talent-level-bot {
-        position: absolute;
-        bottom: 17px;
-        right: 19px;
-        width: 15px;
-        height: 20px;
+        float: right;
+
+        height: 100%;
+        width: 22%;
+        padding-bottom: 12%;
+        margin-left: 8px;
+        display: flex;
+        align-items: flex-end;
+
+        shape-outside: inset(62% 0 0);
       }
     }
-
   }
 
   //--------------
