@@ -109,7 +109,7 @@ customElements.define('dice-two', DiceTwoColors);
  */
 window.descriptionTopPadding = function descriptionTopPadding(text = '') {
     // To compensate for the fact that double newline (i.e, leaving a blank line) functionally results in as if roughly
-    // 30 characters were used. A single newline is then roughly estimated to be a third of that.
+    // 30 characters were used. A single newline is then estimated to be 1/6 of that.
     const withDoubleNewlines = text.replace(/<br><br>/g, 'a'.repeat(30));
     const withNewlines = withDoubleNewlines.replace(/<br>/g, 'a'.repeat(5));
     const textOnly = withNewlines.replace(/<[^>]*>/g, '');
