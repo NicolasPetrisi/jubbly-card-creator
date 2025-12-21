@@ -199,7 +199,7 @@
 
         font-family: none, serif;
         text-align: center;
-        font-size: 8pt;
+        font-size: 7pt;
       }
 
       .talent-level-bot {
@@ -366,17 +366,19 @@
 
     .spell-description-structure {
       height: 100%;
+      width: 100%;
       display: flex;
 
 
       .spell-description {
         height: 100%;
+        width: 100%;
 
         padding: 10px;
 
         font-family: none, serif;
         text-align: center;
-        font-size: 8pt;
+        font-size: 7pt;
       }
 
       .spell-health-location {
