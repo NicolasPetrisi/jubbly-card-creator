@@ -104,29 +104,21 @@ It's a good idea to leave the :id and :key as well :)
                             </template>
 
                             <div class="spell-description-structure">
-
                                 <div style="width: 100%; height: 100%">
 
                                     <template x-if="card.health">
                                         <div class="spell-health-location">
-                                            <div class="spell-health" x-html="markdownParse(card.health)">
-                                                <div class="spell-health-image">
-
-                                                </div>
-
+                                            <div class="spell-health-image"></div>
+                                            <div class="spell-health">
+                                                <div class="meta-text" x-html="markdownParse(card.health)"></div>
                                             </div>
-
-
                                         </div>
                                     </template>
 
                                     <div class="spell-description" x-html="markdownParse(card.description)">
                                     </div>
-
                                 </div>
-
                             </div>
-
 
                         </div>
                     </div>
