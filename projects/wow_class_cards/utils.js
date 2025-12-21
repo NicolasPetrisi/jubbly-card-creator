@@ -129,7 +129,7 @@ window.descriptionTopPadding = function descriptionTopPadding(text = '') {
     // - 160 len -> 26 padding
     // - 200 len -> 14 padding
     // - 213 len -> 10 padding (which is the minimum)
-    return `${Math.max(10, 40 - (Math.pow(len - 40, 2) / 1000))}px`;
+    return `${Math.round(Math.max(10, 40 - (Math.pow(len - 40, 2) / 1000)))}px`;
 };
 
 
