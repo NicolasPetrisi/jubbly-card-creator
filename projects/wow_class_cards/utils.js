@@ -98,3 +98,39 @@ class DiceTwoColors extends HTMLElement {
 
 customElements.define('dice-one', DiceOneColor);
 customElements.define('dice-two', DiceTwoColors);
+
+/**
+ * Returns a padding string between 40 and 10 based on the text length (after filtering out HTML elements), where 40
+ * is for the shortest texts and 10 for the longest. Anything with length 40 and down will get 40 padding, and anything
+ * with more than 40 length will get a quadratic decreasing value from 40 down to a minimum of 10.
+ *
+ * @param text The text to get the number based on the length of.
+ * @returns {string} The padding string to be used for the given text.
+ */
+window.descriptionTopPadding = function descriptionTopPadding(text = '') {
+    // To compensate for the fact that double newline (i.e, leaving a blank line) functionally results in as if roughly
+    // 30 characters were used. A single newline is then roughly estimated to be a third of that.
+    const withDoubleNewlines = text.replace(/<br><br>/g, 'a'.repeat(30));
+    const withNewlines = withDoubleNewlines.replace(/<br>/g, 'a'.repeat(5));
+    const textOnly = withNewlines.replace(/<[^>]*>/g, '');
+
+    const len = textOnly.trim().length;
+
+    const reductionThreshold = 40;
+
+    if (len < reductionThreshold) {
+        return `40px`;
+    }
+
+    // The function below has roughly these points of reference:
+    // - 40 len -> 40 padding
+    // - 80 len -> 38 padding
+    // - 120 len -> 34 padding
+    // - 160 len -> 26 padding
+    // - 200 len -> 14 padding
+    // - 213 len -> 10 padding (which is the minimum)
+    return `${Math.max(10, 40 - (Math.pow(len - 40, 2) / 1000))}px`;
+};
+
+
+

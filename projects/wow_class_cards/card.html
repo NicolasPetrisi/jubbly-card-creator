@@ -52,7 +52,7 @@ It's a good idea to leave the :id and :key as well :)
                                         <div class="meta-text" x-html="card.level"></div>
                                     </div>
                                     <div class="talent-description" x-html="markdownParse(card.description)"
-                                         :style="{ fontSize: card.font_size ? `${card.font_size}px` : '' }"></div>
+                                         :style="{ fontSize: card.font_size ? `${card.font_size}px` : '', paddingTop: descriptionTopPadding(card.description)}"></div>
                                 </div>
 
                             </div>
@@ -115,7 +115,8 @@ It's a good idea to leave the :id and :key as well :)
                                         </div>
                                     </template>
 
-                                    <div class="spell-description" x-html="markdownParse(card.description)">
+                                    <div class="spell-description" x-html="markdownParse(card.description)"
+                                         :style="{ fontSize: card.font_size ? `${card.font_size}px` : '', paddingTop: descriptionTopPadding(card.description)}">
                                     </div>
                                 </div>
                             </div>

@@ -348,6 +348,8 @@
     flex-direction: column;
     align-items: center;
 
+    // TODO Change this to being an absolute position element to fix issue with top padding for descriptions on elements
+    //  that has this vs those that don't.
     .unique-type {
       width: 94%;
       height: 15%;
