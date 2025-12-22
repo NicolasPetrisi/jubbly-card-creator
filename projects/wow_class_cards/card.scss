@@ -182,6 +182,8 @@
       width: 100%;
       height: 10%; //14.5px;
       margin-top: 1px;
+      margin-bottom: 4%;
+
       border-radius: inherit;
       display: flex;
       justify-content: center;
@@ -189,7 +191,7 @@
     }
 
     .talent-description-structure {
-      height: 90%;
+      height: 86%;
       display: flex;
 
       .talent-description {
@@ -348,8 +350,6 @@
     flex-direction: column;
     align-items: center;
 
-    // TODO Change this to being an absolute position element to fix issue with top padding for descriptions on elements
-    //  that has this vs those that don't.
     .unique-type {
       width: 94%;
       height: 15%;

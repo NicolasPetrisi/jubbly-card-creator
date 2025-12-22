@@ -116,7 +116,7 @@ It's a good idea to leave the :id and :key as well :)
                                     </template>
 
                                     <div class="spell-description" x-html="markdownParse(card.description)"
-                                         :style="{ fontSize: card.font_size ? `${card.font_size}px` : '', paddingTop: descriptionTopPadding(card.description)}">
+                                         :style="{ fontSize: card.font_size ? `${card.font_size}px` : '', paddingTop: descriptionTopPadding(card.description, card.unique_type)}">
                                     </div>
                                 </div>
                             </div>
