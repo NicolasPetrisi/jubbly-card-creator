@@ -10,18 +10,21 @@ const viewBox = `0 0 ${widthBot} ${height}`;
 const textX = widthBot / 2;
 const textY = "5";
 
+// Defines the color codings.
+const colorMap = new Map();
+colorMap.set(null, "white"); // only in case no color is given.
+colorMap.set("black", "black");
+colorMap.set("blue", "#1096d4");
+colorMap.set("red", "red");
+colorMap.set("green", "green");
 
 class DiceOneColor extends HTMLElement {
     constructor() {
         super();
 
-        let color = this.getAttribute('c') || 'white';
+        let color = colorMap.get(this.getAttribute('c'));
         const number = this.getAttribute('n') || '';
         const plus = this.hasAttribute('p');
-
-        if (color === 'blue') {
-            color = '#1096d4'
-        }
 
         this.innerHTML = `
       <div class="trapezoid-wrapper">
@@ -49,17 +52,11 @@ class DiceTwoColors extends HTMLElement {
     constructor() {
         super();
 
-        let color_1 = this.getAttribute('c1') || 'white';
-        let color_2 = this.getAttribute('c2') || 'white';
+        let color_1 = colorMap.get(this.getAttribute('c1'));
+        let color_2 = colorMap.get(this.getAttribute('c2'));
+
         const number = this.getAttribute('n') || '';
         const plus = this.hasAttribute('p');
-
-        if (color_1 === 'blue') {
-            color_1 = '#1096d4'
-        }
-        if (color_2 === 'blue') {
-            color_2 = '#1096d4'
-        }
 
         const gradientId = `twoColorGradient-${plus}-${color_1}-${color_2}`;
 
@@ -96,8 +93,10 @@ class DiceTwoColors extends HTMLElement {
     }
 }
 
-customElements.define('dice-one', DiceOneColor);
-customElements.define('dice-two', DiceTwoColors);
+window.addEventListener('DOMContentLoaded', () => {
+    customElements.define('dice-one', DiceOneColor);
+    customElements.define('dice-two', DiceTwoColors);
+});
 
 /**
  * Returns a padding string between 40 and 10 based on the text length (after filtering out HTML elements), where 40
