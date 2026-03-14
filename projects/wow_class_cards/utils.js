@@ -129,12 +129,12 @@ window.descriptionTopPadding = function descriptionTopPadding(text = '', hasUniq
     }
 
     // The function below has roughly these points of reference:
-    // - 10 len -> 40 padding
-    // - 50 len -> 38 padding
-    // - 100 len -> 30 padding
-    // - 150 len -> 15 padding
+    // - 10 len -> 35 padding
+    // - 50 len -> 33 padding
+    // - 100 len -> 25 padding
+    // - 150 len -> 10 padding
     // - 177 len -> 10 padding (which is the minimum)
-    const calculatedValue = 40 - (Math.pow(len - reductionThreshold, 2) / 1000);
+    const calculatedValue = 35 - (Math.pow(len - reductionThreshold, 2) / 1000);
 
     return `${Math.round(Math.max(minimumPadding, calculatedValue - uniqueTypeCompensation))}px`;
 };
