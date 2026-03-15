@@ -1,34 +1,34 @@
 <!doctype html>
 <html class="no-js" lang="">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Card Creator</title>
-        <meta name="description" content="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Card Creator</title>
+    <meta name="description" content="">
 
-        <meta property="og:title" content="">
-        <meta property="og:type" content="">
-        <meta property="og:url" content="">
-        <meta property="og:image" content="">
-        <meta property="og:image:alt" content="">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <meta property="og:image:alt" content="">
 
-        <link rel="icon" href="/favicon.ico" sizes="any">
-        <link rel="icon" href="/icon.svg" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="icon.png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
 
-        <meta name="theme-color" content="#fafafa">
+    <meta name="theme-color" content="#fafafa">
 
-        <script src="vendor/alpine.persist.3.13.7.min.js" defer></script>
-        <script src="vendor/alpine.3.13.7.min.js" defer></script>
-        <script src="js/app.js"></script>
+    <script src="vendor/alpine.persist.3.13.7.min.js" defer></script>
+    <script src="vendor/alpine.3.13.7.min.js" defer></script>
+    <script src="js/app.js"></script>
 
-        <script>
-        </script>
-    </head>
+    <script>
+    </script>
+</head>
 
-    <body :class="[`print-${page_name}`]"
-        x-data="{
+<body :class="[`print-${page_name}`]"
+      x-data="{
 
             // Change these default settings if you like!
             // That way, you can have them the same every time you
@@ -86,7 +86,9 @@
                 const cards = [];
                 let rownum  = 0;
                 let cardnum = 0;
-                for (let card of this.cards) {
+                for (let card of this.cards
+                    .slice().reverse() // Card ordering: comment this line in/out to reverse the order of the cards.
+                ) {
                     const quantity = card.quantity ?? 1;
                     for (let i = 0; i < quantity; i++) {
                         let subcard = Object.assign({}, card);
@@ -168,7 +170,7 @@
             page_preset: null,
             cards: $persist([])
         }"
-        x-init="
+      x-init="
         let folder = example ?? project ?? null;
         let type = 'example';
         if (example) {
@@ -210,7 +212,7 @@
             });
         }
         setTimeout(() => refreshHtml(), 1);"
-        x-effect="
+      x-effect="
             const r = document.querySelector(':root');
             const c = center.split('/').map(a => a/1);
             r.style.setProperty('--card-width',  numberWithOptionalUnits(card_width, units));
@@ -223,134 +225,142 @@
             r.style.setProperty('--center-horizontally', c[0]);
             r.style.setProperty('--center-vertically', c[1]);
         "
-        >
-        <div class="app">
-            <nav class="noprint">
-                <div class="controls" x-data="{settings_open: true}" :class='[settings_open ? "open" : "closed"]'>
-                    <h1 @click="settings_open = !settings_open"><img src="/docs/im/icon_and_logotype-180.png" class="logo"> Settings</h1>
-                    <div class="group" x-data="{open: true}" :class='[open ? "open" : "closed"]'>
-                        <h2 class="group-title" @click="open = !open">Card Settings</h2>
-                        <div class="inputs">
-                            <div class="field">
-                                <label for="card_width">Width</label>
-                                <input x-model="card_width" id="card_width" name="card_width" type="text">
-                            </div>
-                            <div class="field">
-                                <label for="card_height">Height</label>
-                                <input x-model="card_height" id="card_height" name="card_height" type="text">
-                            </div>
-                            <div class="field">
-                                <label for="card_bleed">Bleed</label>
-                                <input x-model="card_bleed" id="card_bleed" name="card_bleed" type="text">
-                            </div>
-                            <div class="field">
-                                <label for="card_preset">Defaults</label>
-                                <select x-model="card_preset" id="card_preset" name="card_preset">
-                                    <option>Select</option>
-                                    <template x-for="(preset, key) in presets.cards">
-                                        <option :value="key" x-text="`${preset.name} [${preset.width} x ${preset.height}]`"></option>
-                                    </template>
-                                </select>
-                            </div>
-                        </div>
+>
+<div class="app">
+    <nav class="noprint">
+        <div class="controls" x-data="{settings_open: true}" :class='[settings_open ? "open" : "closed"]'>
+            <h1 @click="settings_open = !settings_open"><img src="/docs/im/icon_and_logotype-180.png" class="logo">
+                Settings</h1>
+            <div class="group" x-data="{open: true}" :class='[open ? "open" : "closed"]'>
+                <h2 class="group-title" @click="open = !open">Card Settings</h2>
+                <div class="inputs">
+                    <div class="field">
+                        <label for="card_width">Width</label>
+                        <input x-model="card_width" id="card_width" name="card_width" type="text">
                     </div>
-                    <div class="group" x-data="{open: true}" :class='[open ? "open" : "closed"]'>
-                        <h2 class="group-title" @click="open = !open">Page Settings</h2>
-                        <div class="inputs">
-                            <div class="field">
-                                <label for="page_name">Print Page Size</label>
-                                <select x-model="page_name" id="page_name" name="page_name">
-                                    <option value="auto">Auto</option>
-                                    <option value="individual">Individual</option>
-                                    <option value="a4">A4</option>
-                                    <option value="a3">A3</option>
-                                    <option value="a2">A2</option>
-                                    <option value="custom">Custom</option>
-                                </select>
-                            </div>
-                            <div class="field" x-show="page_name==`custom`">
-                                <label for="page_width">Width</label>
-                                <input x-model="page_width" id="page_width" name="page_width" type="text">
-                            </div>
-                            <div class="field" x-show="page_name==`custom`">
-                                <label for="page_height">Height</label>
-                                <input x-model="page_height" id="page_height" name="page_height" type="text">
-                            </div>
-                            <div class="field" x-show="page_name==`custom`">
-                                <label for="card_cols_per_page">Cols per Page</label>
-                                <input x-model="card_cols_per_page" id="card_cols_per_page" name="card_cols_per_page" type="number" min="1" max="999" step="1">
-                            </div>
-                            <div class="field" x-show="page_name==`custom`">
-                                <label for="card_rows_per_page">Rows per Page</label>
-                                <input x-model="card_rows_per_page" id="card_rows_per_page" name="card_rows_per_page" type="number" min="1" max="999" step="1">
-                            </div>
-                            <div class="field" x-show="page_name==`custom`">
-                                <label for="center">Centering</label>
-                                <select x-model="center" id="center" name="center">
-                                    <option value="0/0">No centering</option>
-                                    <option value="0/1">Center Vertically</option>
-                                    <option value="1/0">Center Horizontally</option>
-                                    <option value="1/1">Center Both</option>
-                                </select>
-                            </div>
-                            <div class="field" x-show="page_name==`custom`">
-                                <label for="card_preset">Defaults</label>
-                                <select x-model="page_preset" id="page_preset" name="page_preset">
-                                    <option>Select</option>
-                                    <template x-for="(preset, key) in presets.pages">
-                                        <option :value="key" x-text="`${preset.name} [${preset.width} x ${preset.height}]`"></option>
-                                    </template>
-                                </select>
-                            </div>
-                        </div>
+                    <div class="field">
+                        <label for="card_height">Height</label>
+                        <input x-model="card_height" id="card_height" name="card_height" type="text">
                     </div>
-                    <template x-if="inline_card_html">
-                        <div class="group" x-data="{open: true}" :class='[open ? "open" : "closed"]'>
-                            <h2 class="group-title" @click="open = !open">Card Design</h2>
-                            <div class="inputs">
-                                <div class="field">
-                                    <label for="card_html">Card HTML</label>
-                                    <textarea cols="100" rows="10" x-model="card_html" id="card_html" name="card_html"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </template>
-                    <div class="group" x-data="{open: true}" :class='[open ? "open" : "closed"]'>
-                        <h2 class="group-title" @click="open = !open">Other Settings</h2>
-                        <div class="inputs">
-                            <div class="field">
-                                <label for="units">Default Units</label>
-                                <select x-model="units" id="units" name="units">
-                                    <option value="mm">mm</option>
-                                    <option value="in">inches</option>
-                                    <option value="pt">points</option>
-                                    <option value="px">pixels</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <label for="file">CSV File</label>
-                                <input type="file" accept=".csv" @change="loadCsv($event).then(c => cards = c)">
-                            </div>
-                        </div>
+                    <div class="field">
+                        <label for="card_bleed">Bleed</label>
+                        <input x-model="card_bleed" id="card_bleed" name="card_bleed" type="text">
                     </div>
-                    <div class="help">
-                        <a href="/docs/help.html">Help & Documentation</a> &bullet;
-                        <button @click="if (confirm('Are you sure?')) { localStorage.clear(); location.href = location.href; }">Clear local storage</button> &bullet;
-                        <button @click="refreshAll();" x-text="`Refresh ${(file)?'file and ':''}template`"></button>
+                    <div class="field">
+                        <label for="card_preset">Defaults</label>
+                        <select x-model="card_preset" id="card_preset" name="card_preset">
+                            <option>Select</option>
+                            <template x-for="(preset, key) in presets.cards">
+                                <option :value="key"
+                                        x-text="`${preset.name} [${preset.width} x ${preset.height}]`"></option>
+                            </template>
+                        </select>
                     </div>
                 </div>
-            </nav>
-            <main>
-                <div id="cards" :class="[`project-${project}`, `example-${example}`]">
-                    <template x-for="card in filteredCards">
-                        <!-- the contents here are replaced with card.html -->
-                        <!-- If you are running serverless, replace the entire contents of this template with your card html -->
-                        <div class="card">
-                            <div x-text="card.name"></div>
-                        </div>
-                    </template>
+            </div>
+            <div class="group" x-data="{open: true}" :class='[open ? "open" : "closed"]'>
+                <h2 class="group-title" @click="open = !open">Page Settings</h2>
+                <div class="inputs">
+                    <div class="field">
+                        <label for="page_name">Print Page Size</label>
+                        <select x-model="page_name" id="page_name" name="page_name">
+                            <option value="auto">Auto</option>
+                            <option value="individual">Individual</option>
+                            <option value="a4">A4</option>
+                            <option value="a3">A3</option>
+                            <option value="a2">A2</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    <div class="field" x-show="page_name==`custom`">
+                        <label for="page_width">Width</label>
+                        <input x-model="page_width" id="page_width" name="page_width" type="text">
+                    </div>
+                    <div class="field" x-show="page_name==`custom`">
+                        <label for="page_height">Height</label>
+                        <input x-model="page_height" id="page_height" name="page_height" type="text">
+                    </div>
+                    <div class="field" x-show="page_name==`custom`">
+                        <label for="card_cols_per_page">Cols per Page</label>
+                        <input x-model="card_cols_per_page" id="card_cols_per_page" name="card_cols_per_page"
+                               type="number" min="1" max="999" step="1">
+                    </div>
+                    <div class="field" x-show="page_name==`custom`">
+                        <label for="card_rows_per_page">Rows per Page</label>
+                        <input x-model="card_rows_per_page" id="card_rows_per_page" name="card_rows_per_page"
+                               type="number" min="1" max="999" step="1">
+                    </div>
+                    <div class="field" x-show="page_name==`custom`">
+                        <label for="center">Centering</label>
+                        <select x-model="center" id="center" name="center">
+                            <option value="0/0">No centering</option>
+                            <option value="0/1">Center Vertically</option>
+                            <option value="1/0">Center Horizontally</option>
+                            <option value="1/1">Center Both</option>
+                        </select>
+                    </div>
+                    <div class="field" x-show="page_name==`custom`">
+                        <label for="card_preset">Defaults</label>
+                        <select x-model="page_preset" id="page_preset" name="page_preset">
+                            <option>Select</option>
+                            <template x-for="(preset, key) in presets.pages">
+                                <option :value="key"
+                                        x-text="`${preset.name} [${preset.width} x ${preset.height}]`"></option>
+                            </template>
+                        </select>
+                    </div>
                 </div>
-            </main>
+            </div>
+            <template x-if="inline_card_html">
+                <div class="group" x-data="{open: true}" :class='[open ? "open" : "closed"]'>
+                    <h2 class="group-title" @click="open = !open">Card Design</h2>
+                    <div class="inputs">
+                        <div class="field">
+                            <label for="card_html">Card HTML</label>
+                            <textarea cols="100" rows="10" x-model="card_html" id="card_html"
+                                      name="card_html"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <div class="group" x-data="{open: true}" :class='[open ? "open" : "closed"]'>
+                <h2 class="group-title" @click="open = !open">Other Settings</h2>
+                <div class="inputs">
+                    <div class="field">
+                        <label for="units">Default Units</label>
+                        <select x-model="units" id="units" name="units">
+                            <option value="mm">mm</option>
+                            <option value="in">inches</option>
+                            <option value="pt">points</option>
+                            <option value="px">pixels</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="file">CSV File</label>
+                        <input type="file" accept=".csv" @change="loadCsv($event).then(c => cards = c)">
+                    </div>
+                </div>
+            </div>
+            <div class="help">
+                <a href="/docs/help.html">Help & Documentation</a> &bullet;
+                <button @click="if (confirm('Are you sure?')) { localStorage.clear(); location.href = location.href; }">
+                    Clear local storage
+                </button> &bullet;
+                <button @click="refreshAll();" x-text="`Refresh ${(file)?'file and ':''}template`"></button>
+            </div>
         </div>
-    </body>
+    </nav>
+    <main>
+        <div id="cards" :class="[`project-${project}`, `example-${example}`]">
+            <template x-for="card in filteredCards">
+                <!-- the contents here are replaced with card.html -->
+                <!-- If you are running serverless, replace the entire contents of this template with your card html -->
+                <div class="card">
+                    <div x-text="card.name"></div>
+                </div>
+            </template>
+        </div>
+    </main>
+</div>
+</body>
 </html>

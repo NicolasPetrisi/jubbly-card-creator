@@ -109,4 +109,5 @@ mage,spell,I,2,1,, test_spell_icon_1,active,Frost Armor,Add <dice- g></dice-><di
 mage,spell,I,2,1,y, test_spell_icon_1,active,Remove Lesser Curse,<i>Start of the combat round:</i><br>Remove all curse tokens from a friendly participating character.,,,
 mage,spell,I,2,X,, test_spell_icon_1,active,Amplify Magic,<i>Before another friendly participating character uses an instant power:</i><br>Lower the power's Energy cost by X Energy.,,,
 mage,spell,II,4,2,, test_spell_icon_1,active,Fire Blast,Add <dice- b></dice-><dice- b></dice-> to your dice pool.,,,
-,,,,,,,,,,,,
+mage,spell,II,5,2,, test_spell_icon_1,active,Polymorph,<i>Start of the first round of combat:</i><br>Unequip <b>Polymorph</b> to defeat one independent creature in this combat.,,,
+mage,spell,II,7,2,, test_spell_icon_1,active,Arcane Missiles,"Add <dice- b></dice-><dice- b></dice-> to your dice pool.<br><br>If you did not lose any Health tokens during the previous combat round, you may use <b>Arcane Missiles</b> without paying its Energy cost.",,,
