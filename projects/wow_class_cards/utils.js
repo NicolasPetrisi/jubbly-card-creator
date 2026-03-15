@@ -12,96 +12,104 @@ const textY = "5";
 
 // Defines the color codings.
 const colorMap = new Map();
-colorMap.set(null, "white"); // only in case no color is given.
-colorMap.set("black", "black");
-colorMap.set("blue", "#1096d4");
-colorMap.set("red", "red");
-colorMap.set("green", "green");
+colorMap.set('bl', "black");
+colorMap.set("b", "#1096d4");
+colorMap.set("r", "red");
+colorMap.set("g", "green");
 
-class DiceOneColor extends HTMLElement {
+class Dice extends HTMLElement {
     constructor() {
         super();
 
-        let color = colorMap.get(this.getAttribute('c'));
+        let colors = [];
+
+        this.extractColors('r', colors);
+        this.extractColors('g', colors);
+        this.extractColors('b', colors);
+
+        if (colors.length > 2) {
+            throw new Error("At most 2 colors at the same time are supported! Found attributes: " + this.getAttributeNames());
+        } else if (colors.length === 0) {
+            // Default to black if no color is given to the dice.
+            colors.push(colorMap.get('bl'));
+        }
+
         const number = this.getAttribute('n') || '';
         const plus = this.hasAttribute('p');
 
-        this.innerHTML = `
-      <div class="trapezoid-wrapper">
-        <svg class="trapezoid" width=${widthBot} height=${height} viewBox="${viewBox}">
-          <!-- trapezoid shape with border -->
-          <polygon 
-            points="${points}"
-            fill="${color}" 
-            stroke="black" 
-            stroke-width="0.5"/>
-          <!-- centered number -->
-          <text 
-            x="${textX}" 
-            y="${textY}"  
-            text-anchor="middle" 
-            dominant-baseline="middle" 
-            class="trapezoid-num">${number}</text>
-        </svg>
-        ${plus ? `<div class="trapezoid-plus">+</div>` : ''}
-      </div>`;
+        if (colors.length < 2) {
+            this.innerHTML = `
+                <div class="trapezoid-wrapper">
+                  <svg class="trapezoid" width=${widthBot} height=${height} viewBox="${viewBox}">
+                    <!-- trapezoid shape with border -->
+                    <polygon 
+                      points="${points}"
+                      fill="${colors[0]}" 
+                      stroke="black" 
+                      stroke-width="0.5"/>
+                    <!-- centered number -->
+                    <text 
+                      x="${textX}" 
+                      y="${textY}"  
+                      text-anchor="middle" 
+                      dominant-baseline="middle" 
+                      class="trapezoid-num">${number}</text>
+                  </svg>
+                  ${plus ? `<div class="trapezoid-plus">+</div>` : ''}
+                </div>`;
+
+        } else {
+
+            const gradientId = `twoColorGradient-${plus}-${colors[0]}-${colors[1]}`;
+
+            this.innerHTML = `
+                <div class="trapezoid-wrapper ${plus ? 'has-plus' : ''}">
+                  <svg class="trapezoid" width=${widthBot} height=${height} viewBox="${viewBox}">
+                    <defs>
+                      <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="${colors[0]}" />
+                        <stop offset="48%" stop-color="${colors[0]}" />
+                        <stop offset="49%" stop-color="black" />
+                        <stop offset="50%" stop-color="black" />
+                        <stop offset="52%" stop-color="${colors[1]}" />
+                        <stop offset="100%" stop-color="${colors[1]}" />
+                      </linearGradient>
+                    </defs>
+                    <!-- trapezoid shape with border -->
+                    <polygon 
+                      points="${points}"
+                      fill="url(#${gradientId})" 
+                      stroke="black" 
+                      stroke-width="0.5"/>
+                    <!-- centered number -->
+                    <text 
+                      x="${textX}" 
+                      y="${textY}" 
+                      text-anchor="middle" 
+                      dominant-baseline="middle" 
+                      class="trapezoid-num">${number}</text>
+                  </svg>
+                  ${plus ? `<div class="trapezoid-plus">+</div>` : ''}
+                </div>`;
+        }
+
     }
-}
 
-class DiceTwoColors extends HTMLElement {
-    constructor() {
-        super();
-
-        let color_1 = colorMap.get(this.getAttribute('c1'));
-        let color_2 = colorMap.get(this.getAttribute('c2'));
-
-        const number = this.getAttribute('n') || '';
-        const plus = this.hasAttribute('p');
-
-        const gradientId = `twoColorGradient-${plus}-${color_1}-${color_2}`;
-
-        this.innerHTML = `
-      <div class="trapezoid-wrapper ${plus ? 'has-plus' : ''}">
-        <svg class="trapezoid" width=${widthBot} height=${height} viewBox="${viewBox}">
-          <defs>
-            <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="${color_1}" />
-              <stop offset="48%" stop-color="${color_1}" />
-              <stop offset="49%" stop-color="black" />
-              <stop offset="50%" stop-color="black" />
-              <stop offset="52%" stop-color="${color_2}" />
-              <stop offset="100%" stop-color="${color_2}" />
-            </linearGradient>
-          </defs>
-          <!-- trapezoid shape with border -->
-          <polygon 
-            points="${points}"
-            fill="url(#${gradientId})" 
-            stroke="black" 
-            stroke-width="0.5"/>
-          <!-- centered number -->
-          <text 
-            x="${textX}" 
-            y="${textY}" 
-            text-anchor="middle" 
-            dominant-baseline="middle" 
-            class="trapezoid-num">${number}</text>
-        </svg>
-        ${plus ? `<div class="trapezoid-plus">+</div>` : ''}
-      </div>
-    `;
+    extractColors(colorQualifier, colors) {
+        if (this.hasAttribute(colorQualifier)) {
+            colors.push(colorMap.get(colorQualifier));
+        }
     }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    customElements.define('dice-one', DiceOneColor);
-    customElements.define('dice-two', DiceTwoColors);
+    customElements.define('dice-', Dice);
 });
 
 /**
- * Returns a padding string between 40 and 10 based on the text length (after filtering out HTML elements), where 40
- * is for the shortest texts and 10 for the longest. Anything with length 40 and down will get 40 padding, and anything
- * with more than 40 length will get a quadratic decreasing value from 40 down to a minimum of 10.
+ * Returns a padding string between 35 and 10 based on the text length (after filtering out HTML elements), where 35
+ * is for the shortest texts and 10 for the longest. Anything with length 40 and down will get 35 padding, and anything
+ * with more than 40 length will get a quadratic decreasing value from 35 down to a minimum of 10.
  *
  * @param text The text to get the number based on the length of.
  * @param hasUniqueType If the description will have a "unique type" banner above it, meaning there will be additional
@@ -125,7 +133,7 @@ window.descriptionTopPadding = function descriptionTopPadding(text = '', hasUniq
     const uniqueTypeCompensation = hasUniqueType ? 10 : 0;
 
     if (len <= reductionThreshold) {
-        return `${40 - uniqueTypeCompensation}px`;
+        return `${35 - uniqueTypeCompensation}px`;
     }
 
     // The function below has roughly these points of reference:
