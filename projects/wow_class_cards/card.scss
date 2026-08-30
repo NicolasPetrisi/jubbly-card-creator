@@ -267,17 +267,18 @@
       flex-wrap: wrap;
       justify-content: flex-end;
       align-items: center;
-      padding-top: 3%;
+      padding-top: 4%;
       padding-right: 6%;
 
       .text-field {
         display: flex;
         justify-content: center;
+        align-items: center;
         text-align: center;
         font-family: none, serif;
         font-size: 10pt;
         width: 67%;
-        height: 80%;
+        height: 90%;
       }
 
       .quick_spell {
