@@ -126,7 +126,7 @@ window.descriptionTopPadding = function descriptionTopPadding(text = '', hasUniq
     const len = textOnly.trim().length;
 
     const reductionThreshold = 10;
-    const minimumPadding = hasUniqueType ? 0 : 5;
+    const minimumPadding = hasUniqueType ? 0 : 15;
 
     // This is to compensate for the extra "padding" the unique type banner
     // above gives in addition to the padding we're calculating here.

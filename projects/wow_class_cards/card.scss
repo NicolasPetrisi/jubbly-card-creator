@@ -422,5 +422,24 @@
     }
   }
 
+  //---------------
+  //--Card Back--
+  //---------------
+  .card-back-template {
+    --angle: 0.1deg;
+    rotate: var(--angle);
+
+    border-radius: inherit;
+    height: 100%;
+    width: 100%;
+
+    .counter-rotate-spell-template {
+      position: absolute;
+      rotate: calc(var(--angle) * -1);
+      height: 100%;
+      width: 100%;
+    }
+  }
+
 }
 
