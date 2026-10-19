@@ -28,7 +28,8 @@ class Dice extends HTMLElement {
         this.extractColors('b', colors);
 
         if (colors.length > 2) {
-            throw new Error("At most 2 colors at the same time are supported! Found attributes: " + this.getAttributeNames());
+            this.outerHTML = `<div><b>!!!At most 2 colors at the same time are supported! Found attributes: ${this.getAttributeNames()}!!!</b></div>`;
+            return;
         } else if (colors.length === 0) {
             // Default to black if no color is given to the dice.
             colors.push(colorMap.get('bl'));
@@ -36,6 +37,19 @@ class Dice extends HTMLElement {
 
         const number = this.getAttribute('n') || '';
         const plus = this.hasAttribute('p');
+        const minus = this.hasAttribute('m');
+
+        if (plus && minus) {
+            this.outerHTML = `<div><b>!!!Cannot be both plus and minus. Found attributes: ${this.getAttributeNames()}!!!</b></div>`;
+            return;
+        }
+
+        let sign;
+        if (plus) {
+            sign = '+';
+        } else if (minus) {
+            sign = '-';
+        }
 
         if (colors.length < 2) {
             this.innerHTML = `
@@ -55,7 +69,7 @@ class Dice extends HTMLElement {
                       dominant-baseline="middle" 
                       class="trapezoid-num">${number}</text>
                   </svg>
-                  ${plus ? `<div class="trapezoid-plus">+</div>` : ''}
+                  ${plus || minus ? `<div class="trapezoid-sign">${sign}</div>` : ''}
                 </div>`;
 
         } else {
@@ -89,7 +103,7 @@ class Dice extends HTMLElement {
                       dominant-baseline="middle" 
                       class="trapezoid-num">${number}</text>
                   </svg>
-                  ${plus ? `<div class="trapezoid-plus">+</div>` : ''}
+                  ${plus || minus ? `<div class="trapezoid-sign">${sign}</div>` : ''}
                 </div>`;
         }
 

@@ -1,0 +1,13 @@
+id,spec, type, level, gold, energy, quick_spell, image, spell_type_image, name, description,unique_type,health,font_size,sub_effect,NOTES
+warrior,,talent,III,?,,, test_spell_icon_1,,Improved Heroic Strike,<b>Heroic Strike</b> adds an additional <dice- r></dice-> to your dice pool and has its Energy cost reduced by 1.,,,,,
+warrior,,talent,III,?,,, test_spell_icon_1,,Cruelty,<i>End of your Reroll step:</i><br>Give +3 to a <dice- r></dice->.,,,,,
+warrior,,talent,III,?,,, test_spell_icon_1,,Anticipation,<i>Start of your first Dice Pool step:</i><br>Add <dice- g></dice-><dice- g></dice-><dice- g></dice-> to your dice pool.,,,,,
+warrior,,talent,IV,?,,, test_spell_icon_1,,Battle Trance,<i>End of your Reroll step:</i><br>Spot a <dice- n=8></dice-> to put a token here if there is none already.<br><br><i>Whenever you're about to use a power:</i><br>You may spend a token from here instead of paying its Energy cost.,,,,,
+warrior,,talent,IV,?,,, test_spell_icon_1,,Trauma,"<i>Whenever you change a dice:</i><br>If you change a <dice- r></dice-> into a <dice- r n=8></dice->, gain <b>ATTRITION +1</b>.",,,,,
+warrior,,talent,IV,?,,, test_spell_icon_1,,Unrelenting Assault,<i>Directly after performing your Reroll step:</i><br>Any rerolled <dice- r b></dice-> that resulted in a <dice- r b n=2 m></dice-> may be rerolled a second time.,,,,,
+warrior,,talent,V,?,,, test_spell_icon_1,,Armored to the Teeth,<i>End of your Place Tokens step:</i><br>You may replace up to 2 armor tokens in your defense box with 2 hit tokens each.,,,,,
+warrior,,talent,V,?,,, test_spell_icon_1,,Reinforced Plates,Add <dice- g></dice-><dice- g></dice-> to your dice pool<br><br><i>End of your Dice Pool step:</i><br>You may change a <dice- g></dice-> to a <dice- g n=8></dice->.,,,,,
+warrior,,talent,VI,?,,, test_spell_icon_1,,Precision,<i>End of your Dice Pool step:</i><br>You may reroll any number of <dice- r></dice->.<br><br><b>REROLL +3</b>.,,,,,
+warrior,,talent,VI,?,,, test_spell_icon_1,,Second Wind,<i>Once per Combat when you reach 0 Energy remaining:</i><br>Regain up to half your Energy capacity (rounded up).,,,,,Too weak?
+warrior,,talent,VI,?,,, test_spell_icon_1,,Endless Rage,Your Energy capacity is doubled.,,,,,
+warrior,arms,talent,II,?,,, test_spell_icon_1,,Anger Management,<i>Start of each Combat Round:</i><br>Regain 1 Energy.,,,,,
