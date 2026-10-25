@@ -134,6 +134,8 @@
   }
 
   .talent-structure-top {
+    position: absolute;
+
     border-radius: inherit;
     width: 100%;
     height: 33%;
@@ -159,6 +161,8 @@
 
     .icon {
       position: absolute;
+      width: 100%;
+      height: 100%;
 
       .talent-image {
         --size: 45%;
@@ -178,11 +182,11 @@
     border-bottom-left-radius: 50%;
     border: 2px solid black;
 
-    --size: 5%;
-    width: calc(var(--size) * 3);
-    height: calc(var(--size) * 2);
-    right: 28%;
-    top: 23%;
+    --size: 25px;
+    width: calc(var(--size));
+    height: calc(var(--size));
+    right: 29%;
+    bottom: 7%;
   }
 
   .spell-spec {
@@ -193,9 +197,9 @@
     border-bottom-left-radius: 50%;
     border: 2px solid black;
 
-    --size: 15%;
+    --size: 25px;
     width: calc(var(--size));
-    height: calc(var(--size) * 1.5);
+    height: calc(var(--size));
     right: 4%;
     bottom: 0;
     //right: 10%;
@@ -206,7 +210,8 @@
     width: 100%;
     height: 67%;
     border-radius: inherit;
-    margin-top: 1px;
+
+    margin-top: 51%; // to compensate for top image being behind the template.
 
     .talent-name {
       font-family: none, serif;
