@@ -162,4 +162,28 @@ window.descriptionTopPadding = function descriptionTopPadding(text = '', hasUniq
 };
 
 
+window.imageMapper = function imageMapper(text = '') {
+    const map = new Map();
+
+    // Here are mappings to images for easy-access reference in CSV sheet.
+    map.set('arms', 'ability_warrior_savageblow')
+    map.set('fury', 'ability_warrior_innerrage')
+    map.set('protection', 'ability_warrior_defensivestance')
+
+    map.set('subletly', 'ability_stealth')
+    map.set('assassination', 'ability_rogue_eviscerate')
+    map.set('combat', 'ability_nackstab')
+
+    map.set('affliction', 'spell_shadow_deathcoil')
+    map.set('demonology', 'spell_shadow_metamorphosis')
+    map.set('destruction', 'spell_shadow_rainoffire')
+
+    map.set('elemental', 'spell_nature_lightning')
+    map.set('enhancement', 'spell_shaman_improvedstormstrike')
+    map.set('restoration', 'spell_nature_resistmagic')
+
+    return map.get(text);
+};
+
+
 
