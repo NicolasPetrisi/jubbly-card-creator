@@ -182,28 +182,11 @@
     border-bottom-left-radius: 50%;
     border: 2px solid black;
 
-    --size: 25px;
+    --size: 20px;
     width: calc(var(--size));
     height: calc(var(--size));
     right: 29%;
     bottom: 7%;
-  }
-
-  .spell-spec {
-    position: absolute;
-
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-    border: 2px solid black;
-
-    --size: 25px;
-    width: calc(var(--size));
-    height: calc(var(--size));
-    right: 4%;
-    bottom: 0;
-    //right: 10%;
-    //bottom: 10%;
   }
 
   .talent-structure-bot {
@@ -376,6 +359,23 @@
       height: calc(var(--size) * 1.45);
       margin-top: 2%;
       margin-left: 2.5%;
+    }
+
+    .spell-spec {
+      position: absolute;
+
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+      border-bottom-left-radius: 50%;
+      border: 2px solid black;
+
+      --size: 20px;
+      width: calc(var(--size));
+      height: calc(var(--size));
+      right: 4%;
+      bottom: 0;
+      //right: 10%;
+      //bottom: 10%;
     }
   }
 
