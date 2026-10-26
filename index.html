@@ -39,6 +39,7 @@
             card_bleed: $persist(3),
             page_width: $persist(210),
             page_height: $persist(297),
+            card_id_filter: $persist(null),
             card_cols_per_page: $persist(3),
             card_rows_per_page: $persist(3),
             center: $persist('1/1'),
@@ -89,6 +90,11 @@
                 for (let card of this.cards
                     .slice().reverse() // Card ordering: comment this line in/out to reverse the order of the cards.
                 ) {
+                    if (this.card_id_filter &&
+                        !String(card.id).toLowerCase().includes(
+                        this.card_id_filter.toLowerCase())) {
+                        continue;
+                    }
                     const quantity = card.quantity ?? 1;
                     for (let i = 0; i < quantity; i++) {
                         let subcard = Object.assign({}, card);
@@ -338,6 +344,10 @@
                     <div class="field">
                         <label for="file">CSV File</label>
                         <input type="file" accept=".csv" @change="loadCsv($event).then(c => cards = c)">
+                    </div>
+                    <div class="field">
+                        <label for="card_id_filter">ID Filter</label>
+                        <input x-model="card_id_filter" id="card_id_filter" name="card_id_filter" type="text">
                     </div>
                 </div>
             </div>
