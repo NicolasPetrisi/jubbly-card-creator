@@ -40,6 +40,8 @@
             page_width: $persist(210),
             page_height: $persist(297),
             card_id_filter: $persist(null),
+            show_talents: $persist(true),
+            show_powers: $persist(true),
             card_cols_per_page: $persist(3),
             card_rows_per_page: $persist(3),
             center: $persist('1/1'),
@@ -91,8 +93,13 @@
                     .slice().reverse() // Card ordering: comment this line in/out to reverse the order of the cards.
                 ) {
                     if (this.card_id_filter &&
-                        !String(card.id).toLowerCase().includes(
-                        this.card_id_filter.toLowerCase())) {
+                           !String(card.id).toLowerCase().includes(this.card_id_filter.toLowerCase())) {
+                        continue;
+                    }
+                    if (!this.show_powers && card.type === 'spell') {
+                        continue;
+                    }
+                    if (!this.show_talents && card.type === 'talent') {
                         continue;
                     }
                     const quantity = card.quantity ?? 1;
@@ -348,6 +355,15 @@
                     <div class="field">
                         <label for="card_id_filter">ID Filter</label>
                         <input x-model="card_id_filter" id="card_id_filter" name="card_id_filter" type="text">
+                        <label>
+                            <input type="checkbox" x-model="show_talents">
+                            Talents
+                        </label>
+
+                        <label>
+                            <input type="checkbox" x-model="show_powers">
+                            Powers
+                        </label>
                     </div>
                 </div>
             </div>
