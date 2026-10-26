@@ -161,16 +161,20 @@ window.descriptionTopPadding = function descriptionTopPadding(text = '', hasUniq
     return `${Math.round(Math.max(minimumPadding, calculatedValue - uniqueTypeCompensation))}px`;
 };
 
-
+/**
+ * Here are mappings to images for easy-access reference in CSV sheet.
+ * @param text The text to attempt to map to an easy-access reference.
+ * @returns {any|string} The mapped image name, or the text itself if nothing mapped.
+ */
 window.imageMapper = function imageMapper(text = '') {
     const map = new Map();
 
-    // Here are mappings to images for easy-access reference in CSV sheet.
+    // Class Specs
     map.set('arms', 'ability_warrior_savageblow')
     map.set('fury', 'ability_warrior_innerrage')
     map.set('protection', 'ability_warrior_defensivestance')
 
-    map.set('subletly', 'ability_stealth')
+    map.set('subtlety', 'ability_stealth')
     map.set('assassination', 'ability_rogue_eviscerate')
     map.set('combat', 'ability_nackstab')
 
@@ -182,7 +186,12 @@ window.imageMapper = function imageMapper(text = '') {
     map.set('enhancement', 'spell_shaman_improvedstormstrike')
     map.set('restoration', 'spell_nature_resistmagic')
 
-    return map.get(text);
+
+    // Miscellaneous
+    map.set('weapon', 'ability_warrior_challange')
+    map.set('trinket', 'generated_trinket_icon')
+
+    return map.get(text) ?? text;
 };
 
 

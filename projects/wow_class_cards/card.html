@@ -24,7 +24,7 @@ It's a good idea to leave the :id and :key as well :)
         <template x-if="card.type === 'back'">
             <div style="height: 109%; width: 100%; margin-left: -0%; margin-top: -8%;">
                 <div class="card-back-template"
-                     :style="{background: `url(projects/wow_class_cards/img/card_back/${card.image}.png) center`, backgroundSize: 'cover'}"
+                     :style="{background: `url(projects/wow_class_cards/img/card_back/${imageMapper(card.image)}.png) center`, backgroundSize: 'cover'}"
                 ></div>
             </div>
         </template>
@@ -34,7 +34,7 @@ It's a good idea to leave the :id and :key as well :)
                 <div class="talent-structure-top">
                     <div class="talent-structure-top icon">
                         <div class="talent-image"
-                             :style="{background: `url(projects/wow_class_cards/img/icons/${card.image}.png) center`, backgroundSize: 'cover'}"
+                             :style="{background: `url(projects/wow_class_cards/img/icons/${imageMapper(card.image)}.png) center`, backgroundSize: 'cover'}"
                         ></div>
                     </div>
                     <template x-if="card.spec">
@@ -44,7 +44,7 @@ It's a good idea to leave the :id and :key as well :)
                     </template>
                 </div>
                 <div class="talent-card-template">
-                    
+
                     <!-- this is used to get rid of white edge on talent template -->
                     <div class="vertical-black-filler-talent-template"></div>
 
@@ -73,10 +73,10 @@ It's a good idea to leave the :id and :key as well :)
             <div style="height: 100%; width: 100%">
                 <div class="spell-structure-top icon">
                     <div class="spell-type"
-                         :style="{background: `url(projects/wow_class_cards/img/card_template/${card.spell_type_image}.png) center`, backgroundSize: 'cover'}"
+                         :style="{background: `url(projects/wow_class_cards/img/card_template/${imageMapper(card.spell_type_image)}.png) center`, backgroundSize: 'cover'}"
                     ></div>
                     <div class="spell-image"
-                         :style="{background: `url(projects/wow_class_cards/img/icons/${card.image}.png) center`, backgroundSize: 'cover'}"
+                         :style="{background: `url(projects/wow_class_cards/img/icons/${imageMapper(card.image)}.png) center`, backgroundSize: 'cover'}"
                     ></div>
                     <template x-if="card.spec">
                         <div class="spell-spec"
